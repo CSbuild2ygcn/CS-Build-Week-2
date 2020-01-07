@@ -66,33 +66,137 @@ def playGame():
     # playerOne.lastRoom.name = "the sheer cliff you just scaled"
     print(f"You are in a room called {initRoomTitle}, room number {initRoomNumber}. Room Description: {initRoomDescription}.  Items you can see around you: {initRoomItems}.  The exits are {initRoomExits}")
 
-    while running:
-        
+    while running is True:
         playerAction = input("Enter which direction you want to go or some other choice: ")
         if playerAction == "q":
             print(f"You decide to quit.  Have a nice day")
             running = False
         else:
             if playerAction == "menu":
-                print(f"""
-                    move
-                    fast move
-                    pick up treasure
-                    drop treasure
-                    offer treasure for sale
-                    sell treasure
-                    Check inventory
-                    examine player or item
-                    equip item
-                    unequip item
-                    change name
-                    pray
-                    give to ghost
-                    take from ghost
-                    Mine
-                    get last proof
-                    check lambda coin balance""")
-                
+                menuOptions()
+
+            # Pick up treasure
+            elif playerAction == "2":
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the treasure you wish to pick up: ")
+                    response = pickUpTreasure(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("You picked the item up: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False
+
+            # Drop treasure
+            elif playerAction == "3":
+                checkInventory
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the treasure you wish to drop: ")
+                    response = dropTreasure(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("You dropped the item: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False    
+            
+            # Offer treasure for sale
+            elif playerAction == "4":
+                checkInventory
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the treasure you have appraised: ")
+                    response = offerTreasureForSale(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("The shopkeeper tells you: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False    
+            
+            # Sell treasure
+            elif playerAction == "5":
+                checkInventory
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the treasure you wish to sell: ")
+                    response = sellTreasure(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("You sold the treasure: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False   
+            
+            # Equip Item
+            elif playerAction == "6":
+                checkInventory
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the treasure you wish to equip: ")
+                    response = equipItem(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("You equipped the item: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False  
+            
+            # Unequip Item
+            elif playerAction == "7":
+                checkInventory
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the treasure you wish to unequip: ")
+                    response = unequipItem(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("You unequipped the item: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False  
+            
+            # Change Name
+            elif playerAction == "8":
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter your new name: ")
+                    response = changeName(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("Success! Your new name: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False 
+            
+            # Pray
+            elif playerAction == "9":
+                pray() 
+
+            # Player movement                
             elif playerAction in ("n", "s", "e", "w"):
                 movementResponse = movement(playerAction)
                 roomNumber = movementResponse["room_id"]
@@ -108,6 +212,7 @@ def playGame():
                 roomErrors = movementResponse["errors"]
                 roomMessages = movementResponse["messages"]
                 print(f"{roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}")
+                # Force user to wait until cooldown is done
                 time.sleep(roomCooldown)
             else:
                 print(f"""

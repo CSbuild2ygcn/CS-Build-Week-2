@@ -25,7 +25,6 @@ def move(direction):
     data = response.json()
     print(data)
     return data
-    #
     #print("cooldown--- ", data["cooldown"])
 
 #init()
@@ -56,7 +55,8 @@ def pickUpTreasure(treasureName):
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
-    print(data)
+    # print("response from sesrsver: ", data)
+    return data
 
 def dropTreasure(treasureName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/drop/"

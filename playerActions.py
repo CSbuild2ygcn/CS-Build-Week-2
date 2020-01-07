@@ -16,27 +16,32 @@ def movement(playerAction):
     else:
         return None
 
-def menuOptions(playerAction):
-    if playerAction == "menu":
-        serverResponse = print(f"""
-                move
-                fast move
-                pick up treasure
-                drop treasure
-                offer treasure for sale
-                sell treasure
-                Check inventory
-                examine player or item
-                equip item
-                unequip item
-                change name
-                pray
-                give to ghost
-                take from ghost
-                Mine
-                get last proof
-                check lambda coin balance""")
-        return serverResponse
+def menuOptions():
+    print(f"""
+        NSEW to move
+        fast move
+        2 - pick up treasure
+        3 - drop treasure
+        4 - offer treasure for sale
+        5 - sell treasure
+        Check inventory
+        examine player or item
+        6 - equip item
+        7 - unequip item
+        change name
+        pray
+        give to ghost
+        take from ghost
+        Mine
+        get last proof
+        check lambda coin balance""")
+
+def treasure(playerChoice):
+    serverResponse = pickUpTreasure(playerChoice)
+    print("testing ersponse: ", serverResponse)
+    return serverReponse
+
+    
 
 #  if order == 'n':
 #         if playaaaa.current_room.n_to is None: 
