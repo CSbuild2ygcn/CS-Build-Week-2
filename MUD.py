@@ -32,7 +32,10 @@ def move(direction):
     print("cooldown--- ", data["cooldown"])
 
 #init()
+
 #move("w")
+
+
 
 def fastMove(direction, nextRoomNumber):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
