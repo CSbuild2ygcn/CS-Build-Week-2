@@ -4,7 +4,7 @@ from playerActions import *
 import time
 
 # token = token()
-token = "2b31b01022bf6e2fa8e79e93a7f2db494acdfdd6"
+token = "ABC123"
 print(token)
 checkInventory = checkInventory()
 initData = init()
@@ -324,7 +324,7 @@ def playGame():
                         roomErrors = movementResponse["errors"]
                         roomMessages = movementResponse["messages"]
                         print(f"""
-                        
+
                         {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
                         # Force user to wait until cooldown is done
                         time.sleep(roomCooldown)
