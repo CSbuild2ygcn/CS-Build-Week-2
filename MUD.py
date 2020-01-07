@@ -1,7 +1,13 @@
 import requests
 from secrets import token
 
+
+# print(os.environ.get('TOKEN'))
+
+#print(token)
+
 token = "ABC123"
+
 
 
 def init():
@@ -11,6 +17,7 @@ def init():
     response = requests.get(url = URL, headers = HEADERS)
     #print(response)
     data = response.json()
+    print(data)
     return data
     
 
@@ -23,8 +30,10 @@ def move(direction):
     print(response)
     data = response.json()
     print(data)
+    print("cooldown--- ", data["cooldown"])
     return data
-    #print("cooldown--- ", data["cooldown"])
+
+
 
 
 # move("w")
@@ -47,7 +56,9 @@ def fastMove(direction, nextRoomNumber):
         print("exit is: ", i)
     return data
     #print("exits are:    ", data["exits"][0][1][2][3][4])
+    return data
 #init()
+# fastMove("e", "0")
 #fastMove("w", "1")
 
 def pickUpTreasure(treasureName):
@@ -58,7 +69,8 @@ def pickUpTreasure(treasureName):
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
-    # print("response from sesrsver: ", data)
+
+    print("response from server: ", data)
     return data
 
 def dropTreasure(treasureName):
