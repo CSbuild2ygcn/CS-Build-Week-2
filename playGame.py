@@ -324,6 +324,7 @@ def playGame():
                         roomErrors = movementResponse["errors"]
                         roomMessages = movementResponse["messages"]
                         print(f"""
+                        
                         {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
                         # Force user to wait until cooldown is done
                         time.sleep(roomCooldown)
@@ -345,6 +346,9 @@ def playGame():
                         time.sleep(response["cooldown"])
                     choosing = False
 
+            elif playerAction == "17":
+                print(initData)
+
             # Player movement                
             elif playerAction in ("n", "s", "e", "w"):
                 movementResponse = movement(playerAction)
@@ -361,6 +365,7 @@ def playGame():
                 roomErrors = movementResponse["errors"]
                 roomMessages = movementResponse["messages"]
                 print(f"""
+
                 {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
                 # Force user to wait until cooldown is done
                 time.sleep(roomCooldown)
