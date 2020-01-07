@@ -1,14 +1,9 @@
 import requests
-# import os
-# 'HOME' in os.environ
-# import sys
-# print(sys.prefix)
-# #print(os.environ['TOKEN'])
+from secrets import token
 
-# print(os.environ.get('TOKEN'))
-
+token = token()
 #print(token)
-token = "2b31b01022bf6e2fa8e79e93a7f2db494acdfdd6"
+
 
 def init():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/init/"
@@ -17,7 +12,7 @@ def init():
     response = requests.get(url = URL, headers = HEADERS)
     #print(response)
     data = response.json()
-    print(data)
+    return data
     
 
 def move(direction):
@@ -48,7 +43,7 @@ def fastMove(direction, nextRoomNumber):
         print("exit is: ", i)
     #print("exits are:    ", data["exits"][0][1][2][3][4])
 #init()
-fastMove("e", "0")
+#fastMove("w", "1")
 
 def pickUpTreasure(treasureName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/take/"
