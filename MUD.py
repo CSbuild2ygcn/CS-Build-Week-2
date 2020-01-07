@@ -8,7 +8,7 @@ import requests
 # print(os.environ.get('TOKEN'))
 
 #print(token)
-token = "2b31b01022bf6e2fa8e79e93a7f2db494acdfdd6"
+token = "ABC123"
 
 def init():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/init/"
