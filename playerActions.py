@@ -1,14 +1,42 @@
 from MUD import *
 
-def movement():
+def movement(playerAction):
     if playerAction == "n":
-        move("n")
+        serverResponse = move("n")
+        return serverResponse
     if playerAction == "e":
-        move("e")
+        serverResponse = move("e")
+        return serverResponse
     if playerAction == "s":
-        move("s")
+        serverResponse = move("s")
+        return serverResponse
     if playerAction == "w":
-        move("w")
+        serverResponse = move("w")
+        return serverResponse
+    else:
+        return None
+
+def menuOptions(playerAction):
+    if playerAction == "menu":
+        serverResponse = print(f"""
+                move
+                fast move
+                pick up treasure
+                drop treasure
+                offer treasure for sale
+                sell treasure
+                Check inventory
+                examine player or item
+                equip item
+                unequip item
+                change name
+                pray
+                give to ghost
+                take from ghost
+                Mine
+                get last proof
+                check lambda coin balance""")
+        return serverResponse
 
 #  if order == 'n':
 #         if playaaaa.current_room.n_to is None: 

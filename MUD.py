@@ -24,10 +24,13 @@ def move(direction):
     print(response)
     data = response.json()
     print(data)
-    print("cooldown--- ", data["cooldown"])
+    return data
+    #
+    #print("cooldown--- ", data["cooldown"])
 
 #init()
-#move("w")
+# move("w")
+# move("e")
 
 def fastMove(direction, nextRoomNumber):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
