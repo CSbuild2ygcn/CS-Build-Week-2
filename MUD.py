@@ -1,8 +1,7 @@
 import requests
 from secrets import token
 
-token = token()
-#print(token)
+token = "ABC123"
 
 
 def init():
@@ -27,9 +26,12 @@ def move(direction):
     return data
     #print("cooldown--- ", data["cooldown"])
 
-#init()
+
 # move("w")
 # move("e")
+
+
+
 
 def fastMove(direction, nextRoomNumber):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
