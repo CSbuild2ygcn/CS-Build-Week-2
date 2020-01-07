@@ -10,10 +10,8 @@ def init():
 
     HEADERS = {"Authorization": f"Token {token}"}
     response = requests.get(url = URL, headers = HEADERS)
-    #print(response)
     data = response.json()
     return data
-    
 
 def move(direction):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
@@ -25,11 +23,6 @@ def move(direction):
     data = response.json()
     print(data)
     return data
-    #print("cooldown--- ", data["cooldown"])
-
-#init()
-# move("w")
-# move("e")
 
 def fastMove(direction, nextRoomNumber):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move/"
@@ -44,9 +37,6 @@ def fastMove(direction, nextRoomNumber):
     for i in data["exits"]:
         print("exit is: ", i)
     return data
-    #print("exits are:    ", data["exits"][0][1][2][3][4])
-#init()
-#fastMove("w", "1")
 
 def pickUpTreasure(treasureName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/take/"
@@ -56,7 +46,6 @@ def pickUpTreasure(treasureName):
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
-    # print("response from sesrsver: ", data)
     return data
 
 def dropTreasure(treasureName):
