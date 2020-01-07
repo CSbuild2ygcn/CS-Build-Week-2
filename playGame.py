@@ -23,47 +23,9 @@ initRoomCooldown = initData["cooldown"]
 initRoomErrors = initData["errors"]
 initRoomMessages = initData["messages"]
 
-
-# roomNumber = movementResponse["room_id"]
-# roomTitle = movementResponse["title"]
-# roomDescription = movementResponse["description"]
-# roomCoordinates = movementResponse["coordinates"]
-# roomElevation = movementResponse["elevation"]
-# roomTerrain = movementResponse["terrain"]
-# roomPlayers = movementResponse["players"]
-# roomItems = movementResponse["items"]
-# roomExits = movementResponse["exits"]
-# roomCooldown = movementResponse["cooldown"]
-# roomErrors = movementResponse["errors"]
-# roomMessages = movementResponse["messages"]
-
-#
-    # movement()
-
-    # Make menu for player choice
-
-    # move
-    # fast move
-    # pick up treasure
-    # drop treasure
-    # offer treasure for sale
-    # sell treasure
-    # Check inventory
-    # examine player or item
-    # equip item
-    #unequip item
-    # change name
-    # prayu
-    # give to ghost
-    # take from ghost
-    # Mine
-    # get last proof
-    # check lambda coin balance
-
 def playGame():
     running = True
     print(f"Hello, Player, your token is: {token}, let's go on a mandatory 'adventure'.    Your inventory consists of {checkInventory}.  Press Q to quit at any time")
-    # playerOne.lastRoom.name = "the sheer cliff you just scaled"
     print(f"You are in a room called {initRoomTitle}, room number {initRoomNumber}. Room Description: {initRoomDescription}.  Items you can see around you: {initRoomItems}.  The exits are {initRoomExits}")
 
     while running is True:
@@ -296,6 +258,8 @@ def playGame():
                     print("Your cooldown penalty is: ", response["cooldown"])
                     time.sleep(response["cooldown"])
 
+            # Fast travel - for moving, NOT picking anything up, praying, or anything else
+            # Drop out of Sonic speed before moving about the cabin
             elif playerAction == "15":
                 print("To exit the realm of Sonic and return to normal walking speed, type 'stop' to BOTH input requests")
                 print("Fast Travel requires two arguments - 1) NSWE, and 2) Room Number where you'r traveling to")
@@ -346,6 +310,7 @@ def playGame():
                         time.sleep(response["cooldown"])
                     choosing = False
 
+            # Examine current room
             elif playerAction == "17":
                 print(initData)
 
@@ -372,9 +337,5 @@ def playGame():
             else:
                 print(f"""
                     Wrong input""")
-            # if playerAction is "m":
-            #     print("menu")
-            #     break
-            # print("test", movementResponse)
 
 playGame()
