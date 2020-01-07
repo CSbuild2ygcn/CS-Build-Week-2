@@ -43,6 +43,7 @@ def fastMove(direction, nextRoomNumber):
     print("cooldown for movement is:    ", data["cooldown"])
     for i in data["exits"]:
         print("exit is: ", i)
+    return data
     #print("exits are:    ", data["exits"][0][1][2][3][4])
 #init()
 #fastMove("w", "1")
@@ -67,6 +68,7 @@ def dropTreasure(treasureName):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def offerTreasureForSale(treasureName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/sell/"
@@ -77,6 +79,7 @@ def offerTreasureForSale(treasureName):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def sellTreasure(treasureName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/sell/"
@@ -87,6 +90,7 @@ def sellTreasure(treasureName):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def checkInventory():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/status/"
@@ -96,6 +100,7 @@ def checkInventory():
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def examine():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/examine/"
@@ -106,6 +111,7 @@ def examine():
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def equipItem(equipItem):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/wear/"
@@ -116,6 +122,7 @@ def equipItem(equipItem):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def unequipItem(unequipItem):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/undress/"
@@ -126,6 +133,7 @@ def unequipItem(unequipItem):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def changeName(newName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/change_name/"
@@ -136,6 +144,7 @@ def changeName(newName):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def pray():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/pray/"
@@ -145,6 +154,7 @@ def pray():
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def fly(direction):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/fly/"
@@ -155,6 +165,7 @@ def fly(direction):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def dash():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/dash/"
@@ -165,6 +176,7 @@ def dash():
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def giveToGhost(ghostGiveItem):
     # Holds 1 item ONLY - heaviest item
@@ -176,6 +188,7 @@ def giveToGhost(ghostGiveItem):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def takeFromGhost():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/receive/"
@@ -185,6 +198,7 @@ def takeFromGhost():
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def mine(new_proof):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/mine/"
@@ -195,6 +209,7 @@ def mine(new_proof):
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def lastProof():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/last_proof/"
@@ -203,6 +218,7 @@ def lastProof():
     print(response)
     data = response.json()
     print(data)
+    return data
 
 def lambdaCoinBalance():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/get_balance/"
@@ -211,4 +227,5 @@ def lambdaCoinBalance():
     print(response)
     data = response.json()
     print(data)
+    return data
 

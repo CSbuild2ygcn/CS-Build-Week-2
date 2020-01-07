@@ -194,7 +194,16 @@ def playGame():
             
             # Pray
             elif playerAction == "9":
-                pray() 
+                response = pray()
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("Success! Your new name: ", responses["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False 
 
             # Player movement                
             elif playerAction in ("n", "s", "e", "w"):
