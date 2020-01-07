@@ -35,6 +35,7 @@ def menuOptions():
         14 - Check LambdaCoin Wallet Balance
         15 - Fast Travel
         16 - Examine Item or Player
+        17 - Examine room you're currenltly in
         """)
 
 def treasure(playerChoice):
