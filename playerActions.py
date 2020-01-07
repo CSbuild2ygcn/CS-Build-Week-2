@@ -19,14 +19,11 @@ def movement(playerAction):
 def menuOptions():
     print(f"""
         NSEW to move
-
         1 - Check inventory
         2 - Pick up treasure
         3 - Drop treasure
         4 - Appraise value of treasure
         5 - Sell treasure
-
-        examine player or item
         6 - Equip item
         7 - Unequip item
         8 - Change name
@@ -37,6 +34,7 @@ def menuOptions():
         13 - Submit proof to Lambda Server for evaluation
         14 - Check LambdaCoin Wallet Balance
         15 - Fast Travel
+        16 - Examine Item or Player
         """)
 
 def treasure(playerChoice):

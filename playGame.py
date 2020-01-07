@@ -297,29 +297,53 @@ def playGame():
                     time.sleep(response["cooldown"])
 
             elif playerAction == "15":
+                print("To exit the realm of Sonic and return to normal walking speed, type 'stop' to BOTH input requests")
+                print("Fast Travel requires two arguments - 1) NSWE, and 2) Room Number where you'r traveling to")
                 choosing = True
                 while choosing is True:
+                    playerAction = input("Enter the direction: ")
                     if playerAction == "stop":
                         print(f"You return to a normal walking pace")
                         choosing = False
-                    playerChoice, nextRoomNumber = input("Enter the direction and room number to go Sonic speed: ").split()
-                    movementResponse = fastMove(playerChoice, nextRoomNumber)
-                    movementResponse = movement(playerAction)
-                    roomNumber = movementResponse["room_id"]
-                    roomTitle = movementResponse["title"]
-                    roomDescription = movementResponse["description"]
-                    roomCoordinates = movementResponse["coordinates"]
-                    roomElevation = movementResponse["elevation"]
-                    roomTerrain = movementResponse["terrain"]
-                    roomPlayers = movementResponse["players"]
-                    roomItems = movementResponse["items"]
-                    roomExits = movementResponse["exits"]
-                    roomCooldown = movementResponse["cooldown"]
-                    roomErrors = movementResponse["errors"]
-                    roomMessages = movementResponse["messages"]
-                    print(f"{roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}")
-                    # Force user to wait until cooldown is done
-                    time.sleep(roomCooldown)
+                    nextRoomNumber = input("Enter the room number: ")
+                    if nextRoomNumber == "stop":
+                        print(f"You return to a normal walking pace")
+                        choosing = False
+                    else:
+                        movementResponse = fastMove(playerAction, nextRoomNumber)
+                        roomNumber = movementResponse["room_id"]
+                        roomTitle = movementResponse["title"]
+                        roomDescription = movementResponse["description"]
+                        roomCoordinates = movementResponse["coordinates"]
+                        roomElevation = movementResponse["elevation"]
+                        roomTerrain = movementResponse["terrain"]
+                        roomPlayers = movementResponse["players"]
+                        roomItems = movementResponse["items"]
+                        roomExits = movementResponse["exits"]
+                        roomCooldown = movementResponse["cooldown"]
+                        roomErrors = movementResponse["errors"]
+                        roomMessages = movementResponse["messages"]
+                        print(f"""
+                        {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
+                        # Force user to wait until cooldown is done
+                        time.sleep(roomCooldown)
+            
+            # Examine Item
+            # Doesn't work for Player bc "User 1234" is 2 strings
+            elif playerAction == "16":
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Enter the name of the player or item you wish to examine: ")
+                    response = examine(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("Here's what Lion-O's Sight Beyond Sight reveals: ", response["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False
 
             # Player movement                
             elif playerAction in ("n", "s", "e", "w"):
@@ -336,7 +360,8 @@ def playGame():
                 roomCooldown = movementResponse["cooldown"]
                 roomErrors = movementResponse["errors"]
                 roomMessages = movementResponse["messages"]
-                print(f"{roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}")
+                print(f"""
+                {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
                 # Force user to wait until cooldown is done
                 time.sleep(roomCooldown)
             else:

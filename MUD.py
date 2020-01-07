@@ -102,11 +102,11 @@ def checkInventory():
     print(data)
     return data
 
-def examine():
+def examine(playerChoice):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/examine/"
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
-    DATA = {"name":"[NAME OF ITEM OR PLAYER]"}
+    DATA = {"name":f"{playerChoice}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
