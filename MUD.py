@@ -1,14 +1,14 @@
 import requests
-# import os
-# 'HOME' in os.environ
-# import sys
-# print(sys.prefix)
-# #print(os.environ['TOKEN'])
+from secrets import token
+
 
 # print(os.environ.get('TOKEN'))
 
 #print(token)
-token = "a8f5bd32334d15b03eb9ee86a6a8eb9eb81a59a7"
+
+token = "ABC123"
+
+
 
 def init():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/init/"
@@ -33,9 +33,12 @@ def move(direction):
     print("cooldown--- ", data["cooldown"])
     return data
 
-#init()
 
-#move("w")
+
+
+# move("w")
+# move("e")
+
 
 
 
@@ -51,11 +54,12 @@ def fastMove(direction, nextRoomNumber):
     print("cooldown for movement is:    ", data["cooldown"])
     for i in data["exits"]:
         print("exit is: ", i)
+    return data
     #print("exits are:    ", data["exits"][0][1][2][3][4])
     return data
 #init()
 # fastMove("e", "0")
-    
+#fastMove("w", "1")
 
 def pickUpTreasure(treasureName):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/take/"
@@ -65,7 +69,8 @@ def pickUpTreasure(treasureName):
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
-    print(data)
+
+    print("response from server: ", data)
     return data
 
 def dropTreasure(treasureName):
@@ -111,11 +116,11 @@ def checkInventory():
     print(data)
     return data
 
-def examine():
+def examine(playerChoice):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/examine/"
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
-    DATA = {"name":"[NAME OF ITEM OR PLAYER]"}
+    DATA = {"name":f"{playerChoice}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
