@@ -141,9 +141,20 @@ def changeName(newName):
     }
     DATA = {"name":f"{newName}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    #print(response)
     data = response.json()
-    print(data)
+    #print(data)
+    return data
+
+def confirmName(newName):
+    URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/change_name/"
+    HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
+    }
+    DATA = {"name":f"{newName}", "confirm":"aye"}
+    response = requests.post(url = URL, headers = HEADERS, json = DATA)
+    #print(response)
+    data = response.json()
+    #print(data)
     return data
 
 def pray():

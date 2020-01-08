@@ -174,6 +174,22 @@ def playGame():
                         time.sleep(response["cooldown"])
                     choosing = False 
             
+            # Change Name
+            elif playerAction == "18":
+                choosing = True
+                while choosing is True:
+                    playerChoice = input("Confirm your new name: ")
+                    response = confirmName(playerChoice)
+                    if len(response["errors"]) > 0:
+                        print("You failed becase ", response["errors"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    if len(response["messages"]) > 0:
+                        print("Success! Your new name: ", response["messages"])
+                        print("Your cooldown penalty is: ", response["cooldown"])
+                        time.sleep(response["cooldown"])
+                    choosing = False 
+            
             # Pray
             elif playerAction == "9":
                 response = pray()

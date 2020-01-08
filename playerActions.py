@@ -36,4 +36,5 @@ def menuOptions():
         15 - Fast Travel
         16 - Examine Item or Player
         17 - Examine room you're currently in
+        18 - Confirm name change
         """)
