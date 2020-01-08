@@ -198,7 +198,7 @@ def playGame():
                     print("Your cooldown penalty is: ", response["cooldown"])
                     time.sleep(response["cooldown"])
                 if len(response["messages"]) > 0:
-                    print("Success! Your new name: ", response["messages"])
+                    print("Success! Your prayer has been answered: ", response["messages"])
                     print("Your cooldown penalty is: ", response["cooldown"])
                     time.sleep(response["cooldown"])
             
