@@ -194,7 +194,7 @@ def playGame():
             elif playerAction == "9":
                 response = pray()
                 if len(response["errors"]) > 0:
-                    print("You failed becase ", response["errors"])
+                    print("You failed because ", response["errors"])
                     print("Your cooldown penalty is: ", response["cooldown"])
                     time.sleep(response["cooldown"])
                 if len(response["messages"]) > 0:
