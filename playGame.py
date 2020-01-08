@@ -260,6 +260,7 @@ def playGame():
                     time.sleep(coolD)
                     newProof = proof_of_work(oldProof, difficulty)
                     print("Proof to be sent in: ", newProof)
+                    print("Type of proof being sent in: ", type(newProof))
                     response = mine(newProof)
                     if len(response["errors"]) > 0:
                         print("You failed becase ", response["errors"])

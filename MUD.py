@@ -141,9 +141,7 @@ def changeName(newName):
     }
     DATA = {"name":f"{newName}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    #print(response)
     data = response.json()
-    #print(data)
     return data
 
 def confirmName(newName):
@@ -215,7 +213,7 @@ def mine(newProof):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/mine/"
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
-    DATA = {"proof":f"{newProof}"}
+    DATA = {"proof":newProof}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()
