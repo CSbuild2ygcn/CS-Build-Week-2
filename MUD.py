@@ -211,11 +211,11 @@ def takeFromGhost():
     print(data)
     return data
 
-def mine(new_proof):
+def mine(newProof):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/mine/"
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
-    DATA = {"proof":f"{new_proof}"}
+    DATA = {"proof":f"{newProof}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
     print(response)
     data = response.json()

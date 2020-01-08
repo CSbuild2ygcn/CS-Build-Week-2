@@ -2,6 +2,7 @@ from secrets import *
 from MUD import *
 from playerActions import *
 import time
+from mining import *
 
 # token = token()
 #token = "ABC123"
@@ -250,8 +251,16 @@ def playGame():
             elif playerAction == "13":
                 choosing = True
                 while choosing is True:
-                    playerChoice = input("Enter the proof you wish to submit: ")
-                    response = mine(playerChoice)
+                    lastNum = lastProof()
+                    difficulty = lastNum["difficulty"]
+                    oldProof = lastNum["proof"]
+                    coolD = lastNum["cooldown"]
+                    print("Difficulty being sent in is: ", difficulty)
+                    print("last proof is: ", oldProof)
+                    time.sleep(coolD)
+                    newProof = proof_of_work(oldProof, difficulty)
+                    print("Proof to be sent in: ", newProof)
+                    response = mine(newProof)
                     if len(response["errors"]) > 0:
                         print("You failed becase ", response["errors"])
                         print("Your cooldown penalty is: ", response["cooldown"])
