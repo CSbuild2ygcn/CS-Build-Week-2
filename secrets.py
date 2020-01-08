@@ -1,3 +1,3 @@
-TOKEN = "2b31b01022bf6e2fa8e79e93a7f2db494acdfdd6"
+TOKEN = "397c72c0a6440aae0c75fd52cd42addaefb6ba87"
 def token():
     return TOKEN
