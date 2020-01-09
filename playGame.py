@@ -339,6 +339,73 @@ def playGame():
             elif playerAction == "17":
                 print(initData)
 
+            # Fly
+            elif playerAction == "19":
+                choosing = True
+                while choosing is True:
+                    playerAction = input("Enter the direction: ")
+                    if playerAction == "stop":
+                        print(f"You return to a normal walking pace")
+                        choosing = False
+                    else:
+                        movementResponse = fly(playerAction)
+                        roomNumber = movementResponse["room_id"]
+                        roomTitle = movementResponse["title"]
+                        roomDescription = movementResponse["description"]
+                        roomCoordinates = movementResponse["coordinates"]
+                        roomElevation = movementResponse["elevation"]
+                        roomTerrain = movementResponse["terrain"]
+                        roomPlayers = movementResponse["players"]
+                        roomItems = movementResponse["items"]
+                        roomExits = movementResponse["exits"]
+                        roomCooldown = movementResponse["cooldown"]
+                        roomErrors = movementResponse["errors"]
+                        roomMessages = movementResponse["messages"]
+                        print(f"""
+                        {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
+                        # Force user to wait until cooldown is done
+                        time.sleep(roomCooldown)
+
+            # Dash
+            elif playerAction == "20":
+                choosing = True
+                while choosing is True:
+                    playerAction = input("Enter the direction: ")
+                    if playerAction == "stop":
+                        print(f"You return to a normal walking pace")
+                        choosing = False
+                    num_rooms = input("Enter the number of rooms to dash: ")
+                    if num_rooms == "stop":
+                        print(f"You return to a normal walking pace")
+                        choosing = False
+
+                    else:
+                        next_room_ids = []
+                        for x in range(0, int(num_rooms)):
+                            x_room_id = input("Enter room id: ")
+                            if x_room_id == "stop":
+                                print(f"You return to a normal walking pace")
+                                choosing = False
+                            next_room_ids.append(x_room_id)
+                        next_room_ids = ",".join(next_room_ids)
+                        movementResponse = dash(playerAction, num_rooms, next_room_ids)
+                        roomNumber = movementResponse["room_id"]
+                        roomTitle = movementResponse["title"]
+                        roomDescription = movementResponse["description"]
+                        roomCoordinates = movementResponse["coordinates"]
+                        roomElevation = movementResponse["elevation"]
+                        roomTerrain = movementResponse["terrain"]
+                        roomPlayers = movementResponse["players"]
+                        roomItems = movementResponse["items"]
+                        roomExits = movementResponse["exits"]
+                        roomCooldown = movementResponse["cooldown"]
+                        roomErrors = movementResponse["errors"]
+                        roomMessages = movementResponse["messages"]
+                        print(f"""
+                        {roomMessages} You are now in a room called {roomTitle}, room number {roomNumber}. Room Description: {roomDescription}.  Items you can see around you: {roomItems}.  The exits are {roomExits}, your cooldown is {roomCooldown} seconds.  Your error messages are: {roomErrors}""")
+                        # Force user to wait until cooldown is done
+                        time.sleep(roomCooldown)
+
             # Player movement                
             elif playerAction in ("n", "s", "e", "w"):
                 movementResponse = movement(playerAction)

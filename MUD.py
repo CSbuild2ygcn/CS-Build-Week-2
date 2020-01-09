@@ -21,9 +21,9 @@ def move(direction):
     }
     DATA = {"direction":f"{direction}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
     #print("cooldown--- ", data["cooldown"])
 
@@ -37,9 +37,9 @@ def fastMove(direction, nextRoomNumber):
     }
     DATA = {"direction":f"{direction}", "next_room_id": f"{nextRoomNumber}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     print("cooldown for movement is:    ", data["cooldown"])
     for i in data["exits"]:
         print("exit is: ", i)
@@ -54,7 +54,7 @@ def pickUpTreasure(treasureName):
     }
     DATA = {"name":f"{treasureName}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
     # print("response from sesrsver: ", data)
     return data
@@ -65,9 +65,9 @@ def dropTreasure(treasureName):
     }
     DATA = {"name":f"{treasureName}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def offerTreasureForSale(treasureName):
@@ -76,9 +76,9 @@ def offerTreasureForSale(treasureName):
     }
     DATA = {"name":f"{treasureName}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def sellTreasure(treasureName):
@@ -87,9 +87,9 @@ def sellTreasure(treasureName):
     }
     DATA = {"name":f"{treasureName}", "confirm":"yes"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def checkInventory():
@@ -97,9 +97,9 @@ def checkInventory():
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
     response = requests.post(url = URL, headers = HEADERS)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def examine(playerChoice):
@@ -108,9 +108,9 @@ def examine(playerChoice):
     }
     DATA = {"name":f"{playerChoice}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def equipItem(equipItem):
@@ -119,9 +119,9 @@ def equipItem(equipItem):
     }
     DATA = {"name":f"{equipItem}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def unequipItem(unequipItem):
@@ -130,9 +130,9 @@ def unequipItem(unequipItem):
     }
     DATA = {"name":f"{unequipItem}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def changeName(newName):
@@ -160,9 +160,9 @@ def pray():
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
     response = requests.post(url = URL, headers = HEADERS)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def fly(direction):
@@ -171,20 +171,20 @@ def fly(direction):
     }
     DATA = {"direction":f"{direction}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
-def dash():
+def dash(direction, num_rooms, next_room_ids):
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/adv/dash/"
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
-    DATA = {"direction":"n", "num_rooms":"5", "next_room_ids":"10,19,20,63,72"}
+    DATA = {"direction":f"{direction}", "num_rooms":f"{num_rooms}", "next_room_ids":f"{next_room_ids}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def giveToGhost(ghostGiveItem):
@@ -194,9 +194,9 @@ def giveToGhost(ghostGiveItem):
     }
     DATA = {"name":f"{ghostGiveItem}"}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def takeFromGhost():
@@ -204,9 +204,9 @@ def takeFromGhost():
     HEADERS = {"Authorization": f"Token {token}", "Content-Type": "application/json"
     }
     response = requests.post(url = URL, headers = HEADERS)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def mine(newProof):
@@ -215,25 +215,25 @@ def mine(newProof):
     }
     DATA = {"proof":newProof}
     response = requests.post(url = URL, headers = HEADERS, json = DATA)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def lastProof():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/last_proof/"
     HEADERS = {"Authorization": f"Token {token}"}
     response = requests.get(url = URL, headers = HEADERS)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
 
 def lambdaCoinBalance():
     URL = "https://lambda-treasure-hunt.herokuapp.com/api/bc/get_balance/"
     HEADERS = {"Authorization": f"Token {token}"}
     response = requests.get(url = URL, headers = HEADERS)
-    print(response)
+    # print(response)
     data = response.json()
-    print(data)
+    # print(data)
     return data
